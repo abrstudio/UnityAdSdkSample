@@ -24,20 +24,17 @@ In order to use Ad SDK you have to first initialize the SDK. The following code 
 
 ```csharp
 public class Main : MonoBehaviour {
-	// ...
-
-    // Your application's API key that you got from abrstudio.
+	// Your application's API key that you got from abrstudio.
 	private const string ApiKey = "PUT_YOUR_API_KEY_HERE";
-
+	
 	// Your application's Sign key that you got from abrstudio.
 	private const string SignKey = "PUT_YOUR_SIGN_KEY_HERE";
 
-    public void Start()
+	public void Start() 
 	{
+		// ...
 		// First of all you have to initialize the AbrStudio sdk using your app's API & Sign key.
 		AbrStudio.Initialize(ApiKey, SignKey);
-
-		// ...
 	}
 	// ...
 }
@@ -45,27 +42,27 @@ public class Main : MonoBehaviour {
 
 ### ADVERTISING SDK
 Using advertising sdk has 2 main steps:
-1. Requesting Ad:
+1. Requesting Ad: 
 
     ```csharp
     private string _adId;
-
+    
     private void OnGUI()
     {
         // ...
 
         if (Button("Request Ad"))
-		{
-			// User clicked the "Request Ad" button
-
-			// launching the request ad flow
-			// You will be notified of request ad result via one of the actions that you provide.
-			AbrStudioAd.RequestAd(SampleAdZoneId, adReadyAction, errorAction, noAdAction, noNetworkAction);
-		}
-
-		// ...
+	    {
+		    // User clicked the "Request Ad" button
+		    
+		    // launching the request ad flow
+		    // You will be notified of request ad result via one of the actions that you provide.
+		    AbrStudioAd.RequestAd(SampleAdZoneId, adReadyAction, errorAction, noAdAction, noNetworkAction);
+	    }
+	    
+	    // ...
     }
-
+    
     void adReadyAction(string adId)
 	{
 		// The requested ad is ready
@@ -77,21 +74,21 @@ Using advertising sdk has 2 main steps:
 	void errorAction(long code, string message)
 	{
 		// Error happened during request ad or show ad
-
+		
 		Debug.Log("code: " + code + ", message: " + message);
 	}
 
 	void noAdAction()
 	{
 		// No ad was available for your ad request.
-
+		
 		Debug.Log("No Ad Available!");
 	}
 
 	void noNetworkAction()
 	{
 		// Ad request failed, because the device is not connected to internet.
-
+		
 		Debug.Log("No Network!");
 	}
     ```
@@ -99,43 +96,43 @@ Using advertising sdk has 2 main steps:
 
     ```csharp
     private string _adId;
-
+    
     private void OnGUI()
     {
     	// ...
         if (Button("Show Ad"))
 	    {
 		    // User clicked the "Show Ad" button
-
+		    
 		    // Showing the ad
 		    // You can show the ad whenever you want by providing adId and result actions.
 		    AbrStudioAd.Show(_adId, errorAction, adClosedAction, rewardAction);
 	    }
-
+        
         // ...
     }
-
+    
     void errorAction(long code, string message)
 	{
 		// Error happened during request ad or show ad
-
+		
 		Debug.Log("code: " + code + ", message: " + message);
 	}
-
+    
     void adClosedAction(bool completed)
 	{
 		// Ad was closed.
 		// completed indicates if the video completed before close or not.
-
+		
 		Debug.Log("Ad Closed, completed: " + completed);
 	}
 
 	void rewardAction(string id, string reward)
 	{
 		// The ad is rewarded.
-
+		
 		Debug.Log("The ad is rewarded. (" + "adId: " + id + ", reward: " + reward + ")");
 	}
     ```
-
+    
 For more information about AbrStudio Ad SDK and how to use it, please visit [AbrStudio Website][website].
