@@ -1,4 +1,4 @@
-# Trivial Drive
+# UnityAdSdkSample
 
 ## WHAT IS THIS SAMPLE?
 This project is a sample for AbrStudio Unity Ad SDK.
@@ -37,9 +37,9 @@ public class Main : MonoBehaviour {
 		// First of all you have to initialize the AbrStudio sdk using your app's API & Sign key.
 		AbrStudio.Initialize(ApiKey, SignKey);
 
-        // ...
+		// ...
 	}
-    // ...
+	// ...
 }
 ```
 
@@ -55,15 +55,15 @@ Using advertising sdk has 2 main steps:
         // ...
 
         if (Button("Request Ad"))
-	    {
-		    // User clicked the "Request Ad" button
+		{
+			// User clicked the "Request Ad" button
 
-		    // launching the request ad flow
-		    // You will be notified of request ad result via one of the actions that you provide.
-		    AbrStudioAd.RequestAd(SampleAdZoneId, adReadyAction, errorAction, noAdAction, noNetworkAction);
-	    }
+			// launching the request ad flow
+			// You will be notified of request ad result via one of the actions that you provide.
+			AbrStudioAd.RequestAd(SampleAdZoneId, adReadyAction, errorAction, noAdAction, noNetworkAction);
+		}
 
-	    // ...
+		// ...
     }
 
     void adReadyAction(string adId)
